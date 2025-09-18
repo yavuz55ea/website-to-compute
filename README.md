@@ -1,143 +1,233 @@
-# Your New Website 🤩
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>💖 Yavuz & Dalya 💖</title>
+<style>
+/* ====================== Genel Ayarlar ====================== */
+body {
+  margin:0; padding:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Trebuchet MS',sans-serif;
+  background:black;
+  display:flex; justify-content:center; align-items:center;
+  color:white;
+  text-align:center;
+}
+* { box-sizing:border-box; }
 
-Oh hi! Welcome to your new website. 🛼
+/* ====================== Gradient Arka Plan ====================== */
+body::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(120deg,#1e002a,#2a003f,#3d0066,#4a0072,#1e002a);
+  background-size:400% 400%;
+  animation:bgShift 30s ease infinite;
+  z-index:-2;
+}
+@keyframes bgShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
-With this project you can make a website and preview it in your browser, then deploy it for free – you don't even need a host!
+/* ====================== Bölüm Stilleri ====================== */
+.section{
+  width:90%;
+  max-width:900px;
+  padding:40px 30px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 20px rgba(255,0,255,0.2);
+  margin-bottom:20px;
+  animation:fadeIn 1s ease forwards;
+}
 
-**In this guide we'll learn how to deploy your project to <a href="https://www.fastly.com/products/edge-compute" target="_blank">Fastly Compute</a> – your deployment will automatically handle things like 404 errors, and your beautiful website will immediately be available for everyone, everywhere all at once. 🪄**
+/* ====================== Animasyonlar ====================== */
+@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
+@keyframes swing{0%{transform:rotate(0deg);}25%{transform:rotate(2deg);}50%{transform:rotate(0deg);}75%{transform:rotate(-2deg);}100%{transform:rotate(0deg);}}
+@keyframes float{0%{transform:translateY(100vh) scale(0.8);opacity:1;}100%{transform:translateY(-10vh) scale(1.6);opacity:0;}}
+@keyframes sparkleAnim{0%,100%{opacity:0.2;transform:scale(0.8);}50%{opacity:1;transform:scale(1.3);}}
 
-> You can alternatively deploy your blog to other platforms, like <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+h1{
+  font-size:3.5em;
+  text-shadow:0 0 15px #ff33cc,0 0 30px #ff66ff;
+  margin-bottom:25px;
+}
 
-## In this doc
+/* ====================== Mesaj Stilleri ====================== */
+#msg{
+  font-size:2.8em;
+  line-height:1.4em;
+  margin-bottom:20px;
+}
 
-* [Fork your own site](#fork-your-own-site)
-* [Get to know your website](#get-to-know-your-website)
-  * [Share your draft site](#share-your-draft-site)
-* [Deploy your site to Fastly Compute](#deploy-your-site-to-fastly-compute)
-* [Save your edits to GitHub](#save-your-edits-to-github)
-* [How this project works](#how-this-project-works-)
-  * [Extensions](#extensions)
-* [Keep going! 🚀](#keep-going-)
+/* ====================== Buton Stilleri ====================== */
+button{
+  padding:18px 36px;
+  font-size:1.6em;
+  border:none;
+  border-radius:15px;
+  background:#000;
+  color:#fff;
+  cursor:pointer;
+  transition:0.4s;
+  box-shadow:0 0 12px rgba(255,0,255,0.2);
+}
+button:hover{
+  background:#222;
+  box-shadow:0 0 20px rgba(255,0,255,0.8),0 0 40px rgba(255,0,255,0.5);
+}
 
-## Fork your own site
+/* ====================== Final Ekranı ====================== */
+.final{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:flex; justify-content:center; align-items:center;
+  background:rgba(0,0,0,0.95);
+  z-index:10;
+}
+.final h2{
+  font-size:5em;
+  color:white;
+  text-shadow:0 0 20px #ff33cc,0 0 40px #ff66ff,0 0 80px #cc33ff;
+  animation:swing 2.5s infinite ease-in-out;
+}
 
-**Fork** [this repository](https://github.com/glitchdotcom/website-to-compute/) to create your own copy of the site.
+/* ====================== Kalp & Yıldız ====================== */
+.heart,.star{
+  position:absolute;
+  pointer-events:none;
+  animation:float 8s linear forwards;
+}
+.heart{color:#ff77aa;font-size:38px;}
+.star{color:#ffe066;font-size:20px;}
 
-In your fork, open the site in a codespace by clicking **Code** > **Codespaces** and creating a new codespace on your main branch. 
+/* ====================== Sparkle ====================== */
+.sparkle{
+  position:absolute;
+  width:3px; height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation:sparkleAnim 3s infinite;
+}
+</style>
+</head>
+<body>
 
-<img alt="Create codespace" src="https://github.com/user-attachments/assets/cb29a8da-d1ac-42f5-962c-7d43b8011324" width="400px"/><br/>
+<!-- Parıldayan Noktalar -->
+<script>
+for(let i=0;i<150;i++){
+  let s=document.createElement('div');
+  s.className='sparkle';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDuration=(2+Math.random()*5)+'s';
+  document.body.appendChild(s);
+}
+</script>
 
-Give the codespace a minute or two to start up – it'll automatically build and preview your new website! 
+<!-- Hoşgeldin Bölümü -->
+<div class="section" id="welcome">
+  <h1>💖 Canım Sevgilim 💖</h1>
+  <p>Hoş geldin! 💕</p>
+  <button onclick="startMessages()">Başla 💖</button>
+</div>
 
-![this project in a codespace](https://github.com/user-attachments/assets/308941a8-ddbe-48f6-a8f0-c23cc615ed01)
+<!-- Mesaj Bölümü -->
+<div class="section" id="content" style="display:none;">
+  <p id="msg">Sakın üzülme tamam mı? 🌸</p>
+  <button id="btn" onclick="nextMsg()">Bas bitanem 💖</button>
+</div>
 
-* When your website preview opens, click the **🔎 Split** button at the bottom so that you can see the site side by side with your code.
-* _You can close [x] the **Terminal** while you work._
+<!-- Final -->
+<div class="final" id="final" style="display:none;">
+  <h2>💖 Yavuz & Dalya 💖</h2>
+</div>
 
-Make sure you [save your changes to GitHub](#save-your-edits-to-github).
+<script>
+// ====================== Mesajlar ======================
+const messages=[
+  "Sakın üzülme tamam mı? 🌸",
+  "Ben hep senin yanındayım 💕",
+  "Ne kadar uzakta olsam da kalbim seninle 💖",
+  "Gülümse çünkü sen benim mutluluğumsun 😊",
+];
+const buttonTexts=[
+  "Bas bitanem 💖",
+  "Buna da bas bakimm 🌸",
+  "Buda var la hıyar 😅",
+  "Bu son güzelimmm 😘"
+];
+let index=0;
 
-## Get to know your website
+function startMessages(){
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('content').style.display='block';
+}
 
-You can make edits in the files by opening them from the left sidebar. Your website preview will update as you edit!
+// ====================== Her mesajda animasyon ======================
+function nextMsg(){
+  index++;
+  if(index<messages.length){
+    document.getElementById('msg').innerText=messages[index];
+    if(index<buttonTexts.length){
+      document.getElementById('btn').innerText=buttonTexts[index];
+    }
+    // Kalpler
+    for(let i=0;i<8;i++){
+      let h=document.createElement('div');
+      h.className='heart';
+      h.innerText='❤';
+      h.style.left=(Math.random()*100)+'vw';
+      h.style.fontSize=(20+Math.random()*25)+'px';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),8000);
+    }
+    // Yıldızlar
+    for(let i=0;i<5;i++){
+      let s=document.createElement('div');
+      s.className='star';
+      s.innerText='✦';
+      s.style.left=(Math.random()*100)+'vw';
+      s.style.fontSize=(15+Math.random()*20)+'px';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),8000);
+    }
+  } else {
+    showFinal();
+  }
+}
 
-💡 Try opening `index.html` and making a change.
+// ====================== Final ======================
+function showFinal(){
+  document.getElementById('content').style.display='none';
+  document.getElementById('final').style.display='flex';
+  // Kalpler ve yıldızlar
+  setInterval(()=>{
+    let h=document.createElement('div');
+    h.className='heart';
+    h.innerText='❤';
+    h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(30+Math.random()*30)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),8000);
+  },400);
 
-🎨 Change your site style rules in `style.css`.
-
-🖼️ Add images in the `public` folder – you'll find an example of including an image in the HTML.
-
-> 🚨⚠️ Danger zone: There are directories in the project that might break your site... 😱😈
->
-> * The `.devcontainer` folder includes the configuration that creates the experience in your codespace.
-> * The `helpers` folder contains some bash scripts that run when your project starts and when you hit the **🚀 Publish** button.
-
-### Share your draft site 
-
-You can share links to your draft site with collaborators – click **🔗 Share** at the bottom of the editor. The terminal output will include a link you can right-click and copy to share with anyone you like! 
-
-> This project includes a handy shortcut button for grabbing your preview URL but it might be a wee bit error prone 😅 you can also access these details in **💻 Terminal** > **PORTS** or by clicking the little Forwarded Ports icon: <img src="https://github.com/user-attachments/assets/6bfc0238-a0a8-434f-9188-ff1d45df0ca0" style="height:1em" alt="ports icon"/>
->
-> Change `private` to `public` by right-clicking your running port and choosing from the options.
->
-> Copy the URL to your clipboard and share it 📋.
-
-## Deploy your site to Fastly Compute
-
-Ready to unveil your site to the world? Deploy it to Fastly!
-
-Grab a Fastly API key from your account and add it to your GitHub repo:
-
-- Sign up for a <strong><a href="https://www.fastly.com/signup/" target="_blank">free Fastly developer account</a></strong>
-- Grab an **API Token** from **Account** > **API Tokens** > **Personal Tokens** > **Create Token**
-  - _Type_: Automation
-  - _Role_: Engineer
-  - _Scope_: Global (deselect the _Read-only access_ box)
-  - _Access_: All services
-  - _Expiration_: Never expire
-- **Copy the token value into GitHub**
-  - Back in your codespace, click into the textfield at the top of the editor and type `>` to access the command palette
-  - Type `secret` and select **Codespaces: Manage user secrets**
-    - <img alt="Secret command" src="https://github.com/user-attachments/assets/a6cfeac8-2aca-40a4-ab41-d207733b61cc" width="300px"/>
-  - Click **+ Add a new secret**
-    - <img alt="Add new secret" src="https://github.com/user-attachments/assets/350e545c-0073-4327-ac99-3663049e7aad" width="400px"/>
-  - Enter the name `FASTLY_API_TOKEN`
-    - <img alt="Fastly token" src="https://github.com/user-attachments/assets/536d1b2a-bf62-4085-aac4-ade7d2898583" width="400px"/>
-  - Paste your token value and enter
-
-In the notifications area at the bottom right of your codespace, you should see a prompt to **reload** for the new environment variable, so go ahead and click that (otherwise click the little bell 🔔 icon to check for the message).
-
-Hit the **🚀 Publish** button at the bottom of the editor, enter `y` and watch the **Terminal** output for your new site address! It might take a couple of minutes... 🥁
-
-![New Compute app address in the Terminal](https://github.com/user-attachments/assets/0a5a8f84-4907-4d60-83da-d3b90e745562)
-
-You'll see your new `*.edgecompute.app` address in the output. Open it in a new tab and tell everyone you know about your new site. 📣
-
-🎢 Whenever you update your content, hit the **🚀 Publish** button again to go live!
-
-## Save your edits to GitHub
-
-GitHub will keep the edits you make in the codespace only for a limited time, so it's a good idea to commit your work to a repo regularly. Use the **Source Control** button on the left of the editor – you can make commits, open and merge pull requests right inside the codespace. 
-
-<img alt="source control" src="https://github.com/user-attachments/assets/a5160b08-4f80-4a5f-af76-bde18a43427d" width="300px"/>
-
-> GitHub will notify you if any of your codespaces are about to expire. If you have changes you want to keep, you can use the **Export changes to a branch** option.
-> 
-> <img alt="export to branch" width="500px" src="https://github.com/user-attachments/assets/c7815347-3e5a-4e34-97f2-db58343acaa4"/>
-
-## How this project works 🧐
-
-This project uses the <a href="https://github.com/fastly/compute-js-static-publish" target="_blank">Fastly JavaScript Static Publisher</a> to turn your blog into a serverless app that runs at the network edge, near your users. 
-
-* The project uses [Vite](https://vite.dev/) to build your site for deployment, placing files in the `deploy/_site` folder.
-* The Static Publisher uses those files to scaffold a Compute app that compiles into Webassembly (Wasm) to run fast and securely on the Fastly network – you'll find the Compute code in `deploy/_app` after you deploy.
-* When you publish, the project deploys the app to Fastly, creating a service and uploading the Wasm to it.
-* It then then publishes your content to a KV Store – a key-value store that also runs on Fastly and that your app can talk to.
-
-_The app itself only needs deployed to Fastly once, when you click the **🚀 Publish** button after that, we just update the content in your KV Store and your Compute app will pull your assets from there._
-
-📝 Your Fastly service and KV Store will include your GitHub username and repo in their names, so you'll only be able to deploy one Compute app per repo unless you tweak the scripts.
-
-⚙️ The settings we use to create the guided experience in the codespace are in the `.devcontainer/` folder.
-
-🧰 You'll find the Fastly CLI commands we use under the hood in the `helpers/publish.sh` script.
-
-💻 If you check the right-hand side of the **Terminal** you'll find multiple processes – this is to run the vite and Fastly commands.
-
-### Extensions
-
-This project uses the following extensions from the dev community! 🙌
-
-* [VSCode Action Buttons Ext](https://marketplace.visualstudio.com/items?itemName=jkearins.action-buttons-ext)
-* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-## Keep going! 🛸
-
-**Don't stop there, <a href="https://www.fastly.com/documentation/solutions/tutorials/deliver-your-site/#sending-domain-traffic-to-fastly" target="_blank">add a domain to your new site</a>.**
-
-You'll find your service in your Fastly account control panel – check out the **Observability** stats! 📊
-
-Check out more tips on using the <a href="https://github.com/fastly/compute-js-static-publish" target="_blank">Static Publisher</a> in its `README`. Note that if you change the Compute code, you'll need to run a separate deploy command to push your changes to Fastly as the **🚀 Publish** button only deploys once, after that it just updates your KV content.
-
-🛟 Get help on the <a href="https://community.fastly.com" target="_blank">community forum</a>.
-
-<img src="https://github.com/user-attachments/assets/17a8af4a-100f-416d-a1cf-f84174262138" width="100px"/>
+  setInterval(()=>{
+    let s=document.createElement('div');
+    s.className='star';
+    s.innerText='✦';
+    s.style.left=Math.random()*100+'vw';
+    s.style.fontSize=(15+Math.random()*25)+'px';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),8000);
+  },600);
+}
+</script>
+</body>
+</html>
